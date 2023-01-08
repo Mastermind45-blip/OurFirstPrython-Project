@@ -5,6 +5,20 @@ from app.schemas.user import (
     MultipleUsersResponse,
 )
 from app.services.user import UserService
+from app.services.user import UserService
+import logging
+
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    format="%(levelname)-6s %(name)-15s %(asctime)s.%(msecs)03d %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    filename="log.txt",
+)
+logger.setLevel(logging.WARNING)  # debug -> info -> warning -> error -> critical
+
+console = logging.StreamHandler()
+logger.addHandler(console)
 
 
 def create_user_router() -> APIRouter:
